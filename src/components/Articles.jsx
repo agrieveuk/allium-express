@@ -23,7 +23,7 @@ const Articles = () => {
                   <h4>{title}</h4>
                   <img
                     src='https://picsum.photos/400/300'
-                    alt='placeholder article image'
+                    alt='placeholder article visual'
                   />
                   <div className='article-info'>
                     <p>votes: {votes}</p>
