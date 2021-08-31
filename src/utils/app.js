@@ -10,4 +10,9 @@ const getArticles = async (topic) => {
   return data.articles;
 };
 
-export { getArticles };
+const getArticleById = async (article_id) => {
+  const { data } = await newsApi.get(`/articles/${article_id}`);
+  return data.article;
+};
+
+export { getArticles, getArticleById };
