@@ -1,17 +1,11 @@
-import { useEffect, useState } from 'react';
-import { getArticles } from '../utils/app';
 import { Link, useParams } from 'react-router-dom';
+import { useArticles } from '../hooks/useApi';
 
 const Articles = () => {
   const { topic } = useParams();
-  const [articleList, setArticleList] = useState([]);
+  const { articleList, isLoading } = useArticles(topic);
 
-  useEffect(() => {
-    getArticles(topic).then((data) => {
-      setArticleList(data);
-    });
-  }, [topic]);
-
+  if (isLoading) return <h3>Any moment now...</h3>;
   return (
     <main>
       <ul className='article-list'>

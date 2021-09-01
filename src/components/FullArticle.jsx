@@ -1,18 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArticleById } from '../utils/app';
+import { useArticle } from '../hooks/useApi';
 import Comments from './Comments';
 
 const FullArticle = () => {
   const { article_id } = useParams();
-  const [article, setArticle] = useState({});
   const [displayComments, setDisplayComments] = useState(false);
-
-  useEffect(() => {
-    getArticleById(article_id).then((data) => {
-      setArticle(data);
-    });
-  }, [article_id]);
+  const { article, isLoading } = useArticle(article_id);
 
   const toggleComments = () => {
     setDisplayComments((currDisplayComments) => {
@@ -20,6 +14,7 @@ const FullArticle = () => {
     });
   };
 
+  if (isLoading) return <h3>Any moment now...</h3>;
   return (
     <main>
       <article>

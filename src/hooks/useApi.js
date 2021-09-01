@@ -1,5 +1,21 @@
 import { useEffect, useState } from 'react';
-import { getComments } from '../utils/app';
+import { getArticleById, getArticles, getComments } from '../utils/app';
+
+export const useArticle = (article_id) => {
+  const [article, setArticle] = useState({}); // change with some isLoading
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    getArticleById(article_id).then((data) => {
+      setArticle(data);
+      setIsLoading(false);
+    });
+  }, [article_id]);
+
+  return { article, isLoading };
+};
 
 export const useComments = (article_id) => {
   const [comments, setComments] = useState();
@@ -15,4 +31,20 @@ export const useComments = (article_id) => {
   }, [article_id]);
 
   return { comments, isLoading };
+};
+
+export const useArticles = (topic) => {
+  const [articleList, setArticleList] = useState([]); // change with some isLoading
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    getArticles(topic).then((data) => {
+      setArticleList(data);
+      setIsLoading(false);
+    });
+  }, [topic]);
+
+  return { articleList, isLoading };
 };
