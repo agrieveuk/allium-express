@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useArticle } from '../hooks/useApi';
 import Comments from './Comments';
+import Votes from './Votes';
 
 const FullArticle = () => {
   const { article_id } = useParams();
@@ -30,9 +31,7 @@ const FullArticle = () => {
           alt='placeholder article visual'
         />
         <p>{article.body}</p>
-        <div>
-          <p>{article.votes}</p>
-        </div>
+        <Votes article_id={article_id} votes={article.votes} />
       </article>
       <button onClick={toggleComments}>
         Comments: {article.comment_count}

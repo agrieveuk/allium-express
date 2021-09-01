@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
-import { getArticleById, getArticles, getComments } from '../utils/app';
+import {
+  getArticleById,
+  getArticles,
+  getComments,
+  patchArticle,
+} from '../utils/app';
 
 export const useArticle = (article_id) => {
-  const [article, setArticle] = useState({}); // change with some isLoading
+  const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -34,7 +39,7 @@ export const useComments = (article_id) => {
 };
 
 export const useArticles = (topic) => {
-  const [articleList, setArticleList] = useState([]); // change with some isLoading
+  const [articleList, setArticleList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -47,4 +52,21 @@ export const useArticles = (topic) => {
   }, [topic]);
 
   return { articleList, isLoading };
+};
+
+export const useVotes = (article_id, setHasErrored) => {
+  const [isLiked, setIsLiked] = useState(false);
+
+  const flipLikeStatus = () => {
+    setHasErrored(false);
+    const inc_votes = isLiked ? -1 : 1;
+    setIsLiked((currIsLiked) => !currIsLiked);
+
+    patchArticle(article_id, inc_votes).catch(() => {
+      setHasErrored(true);
+      setIsLiked((currIsLiked) => !currIsLiked);
+    });
+  };
+
+  return [isLiked, flipLikeStatus];
 };

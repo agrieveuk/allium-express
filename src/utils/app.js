@@ -20,4 +20,11 @@ const getComments = async (article_id) => {
   return data.comments;
 };
 
-export { getArticles, getArticleById, getComments };
+const patchArticle = async (article_id, inc_votes) => {
+  const { data } = await newsApi.patch(`/articles/${article_id}`, {
+    inc_votes,
+  });
+  return data.article.votes;
+};
+
+export { getArticles, getArticleById, getComments, patchArticle };
