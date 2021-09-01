@@ -15,4 +15,9 @@ const getArticleById = async (article_id) => {
   return data.article;
 };
 
-export { getArticles, getArticleById };
+const getComments = async (article_id) => {
+  const { data } = await newsApi.get(`/articles/${article_id}/comments`);
+  return data.comments;
+};
+
+export { getArticles, getArticleById, getComments };

@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById } from '../utils/app';
+import Comments from './Comments';
 
 const FullArticle = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
+  const [displayComments, setDisplayComments] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id).then((data) => {
-      console.log(data);
       setArticle(data);
     });
   }, [article_id]);
+
+  const toggleComments = () => {
+    setDisplayComments((currDisplayComments) => {
+      return !currDisplayComments;
+    });
+  };
 
   return (
     <main>
@@ -32,7 +39,10 @@ const FullArticle = () => {
           <p>{article.votes}</p>
         </div>
       </article>
-      <button>Comments: {article.comment_count}</button>
+      <button onClick={toggleComments}>
+        Comments: {article.comment_count}
+      </button>
+      {displayComments ? <Comments article_id={article_id} /> : null}
     </main>
   );
 };
