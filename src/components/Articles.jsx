@@ -44,6 +44,13 @@ const Articles = () => {
           }
         )}
       </ul>
+      <footer>
+        <PageButton
+          page={page}
+          setPage={setPage}
+          totalArticles={totalArticles}
+        />
+      </footer>
     </main>
   );
 };

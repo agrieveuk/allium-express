@@ -102,6 +102,16 @@ nav {
   transform: scale(1.1);
 }
 
+.page-buttons {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+footer {
+  padding-bottom: 200px;
+}
+
 .not-found-page img {
   max-height: 45vh;
 }
