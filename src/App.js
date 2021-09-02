@@ -7,24 +7,29 @@ import Articles from './components/Articles';
 import Nav from './components/Nav';
 import Header from './components/Header';
 import Banner from './components/Banner';
+import RequireLogin from './components/RequireLogin';
 
 function App() {
+  const [user, setUser] = useState({ username: 'weegembump' });
+
   return (
     <div className='App'>
       <Header />
-      <Nav />
-      <Switch>
-        <Route exact path='/'>
-          <Articles />
-        </Route>
-        <Route exact path='/topics/:slug'>
-          <Banner />
-          <Articles />
-        </Route>
-        <Route exact path='/articles/:article_id'>
-          <FullArticle />
-        </Route>
-      </Switch>
+      <RequireLogin user={user} setUser={setUser}>
+        <Nav />
+        <Switch>
+          <Route exact path='/'>
+            <Articles />
+          </Route>
+          <Route exact path='/topics/:topic'>
+            <Banner />
+            <Articles />
+          </Route>
+          <Route exact path='/articles/:article_id'>
+            <FullArticle user={user} />
+          </Route>
+        </Switch>
+      </RequireLogin>
     </div>
   );
 }

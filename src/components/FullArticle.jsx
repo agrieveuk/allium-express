@@ -4,7 +4,7 @@ import { useArticle } from '../hooks/useApi';
 import Comments from './Comments';
 import Votes from './Votes';
 
-const FullArticle = () => {
+const FullArticle = ({ user }) => {
   const { article_id } = useParams();
   const [displayComments, setDisplayComments] = useState(false);
   const { article, isLoading } = useArticle(article_id);
@@ -36,7 +36,9 @@ const FullArticle = () => {
       <button onClick={toggleComments}>
         Comments: {article.comment_count}
       </button>
-      {displayComments ? <Comments article_id={article_id} /> : null}
+      {displayComments ? (
+        <Comments article_id={article_id} user={user} />
+      ) : null}
     </main>
   );
 };

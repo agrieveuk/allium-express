@@ -35,7 +35,7 @@ export const useComments = (article_id) => {
     });
   }, [article_id]);
 
-  return { comments, isLoading };
+  return { comments, isLoading, setComments };
 };
 
 export const useArticles = (topic) => {

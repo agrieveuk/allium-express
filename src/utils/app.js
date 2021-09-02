@@ -27,4 +27,12 @@ const patchArticle = async (article_id, inc_votes) => {
   return data.article.votes;
 };
 
-export { getArticles, getArticleById, getComments, patchArticle };
+const postComment = async (article_id, username, body) => {
+  const { data } = await newsApi.post(`/articles/${article_id}/comments`, {
+    username,
+    body,
+  });
+  return data.comment;
+};
+
+export { getArticles, getArticleById, getComments, patchArticle, postComment };

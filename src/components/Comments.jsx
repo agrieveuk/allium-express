@@ -1,11 +1,17 @@
 import { useComments } from '../hooks/useApi';
+import NewComment from './NewComment';
 
-const Comments = ({ article_id }) => {
-  const { comments, isLoading } = useComments(article_id);
+const Comments = ({ article_id, user }) => {
+  const { comments, isLoading, setComments } = useComments(article_id);
 
   if (isLoading) return <h3>Any moment now...</h3>;
   return (
     <section>
+      <NewComment
+        article_id={article_id}
+        user={user}
+        setComments={setComments}
+      />
       <ul>
         {comments.map(({ comment_id, votes, created_at, author, body }) => {
           return (
