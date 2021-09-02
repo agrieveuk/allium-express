@@ -1,15 +1,25 @@
 import { Link, useParams } from 'react-router-dom';
 import { useArticles } from '../hooks/useApi';
+import PageButton from './PageButton';
 import SortOption from './SortOption';
 
 const Articles = () => {
   const { topic } = useParams();
-  const { articleList, isLoading, setSortBy, sortBy } = useArticles(topic);
+  const {
+    articleList,
+    isLoading,
+    setSortBy,
+    sortBy,
+    page,
+    setPage,
+    totalArticles,
+  } = useArticles(topic);
 
   if (isLoading) return <h3>Any moment now...</h3>;
   return (
     <main>
       <SortOption sortBy={sortBy} setSortBy={setSortBy} />
+      <PageButton page={page} setPage={setPage} totalArticles={totalArticles} />
       <ul className='article-list'>
         {articleList.map(
           ({ article_id, title, votes, comment_count, created_at }) => {

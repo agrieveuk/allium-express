@@ -42,17 +42,32 @@ export const useArticles = (topic) => {
   const [articleList, setArticleList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState(undefined);
+  const [page, setPage] = useState(1);
+  const [totalArticles, setTotalArticles] = useState(0);
+
+  useEffect(() => {
+    setPage(1);
+  }, [topic]);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getArticles({ topic, sort_by: sortBy }).then((data) => {
-      setArticleList(data);
+    getArticles({ topic, sort_by: sortBy, page }).then((data) => {
+      setArticleList(data.articles);
+      setTotalArticles(+data.total_count);
       setIsLoading(false);
     });
-  }, [topic, sortBy]);
+  }, [topic, sortBy, page]);
 
-  return { articleList, isLoading, setSortBy, sortBy };
+  return {
+    articleList,
+    isLoading,
+    setSortBy,
+    sortBy,
+    page,
+    setPage,
+    totalArticles,
+  };
 };
 
 export const useVotes = (article_id, setHasErrored) => {
