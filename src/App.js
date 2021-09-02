@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Banner from './components/Banner';
 import RequireLogin from './components/RequireLogin';
 import SignOut from './components/SignOut';
+import NotFound404 from './components/NotFound404';
 
 function App() {
   const [user, setUser] = useState({ username: 'weegembump' });
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path='/articles/:article_id'>
             <FullArticle user={user} />
+          </Route>
+          <Route path='/'>
+            <NotFound404 />
           </Route>
         </Switch>
       </RequireLogin>
