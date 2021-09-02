@@ -1,13 +1,15 @@
 import { Link, useParams } from 'react-router-dom';
 import { useArticles } from '../hooks/useApi';
+import SortOption from './SortOption';
 
 const Articles = () => {
   const { topic } = useParams();
-  const { articleList, isLoading } = useArticles(topic);
+  const { articleList, isLoading, setSortBy, sortBy } = useArticles(topic);
 
   if (isLoading) return <h3>Any moment now...</h3>;
   return (
     <main>
+      <SortOption sortBy={sortBy} setSortBy={setSortBy} />
       <ul className='article-list'>
         {articleList.map(
           ({ article_id, title, votes, comment_count, created_at }) => {

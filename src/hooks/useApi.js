@@ -41,17 +41,18 @@ export const useComments = (article_id) => {
 export const useArticles = (topic) => {
   const [articleList, setArticleList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortBy, setSortBy] = useState(undefined);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getArticles(topic).then((data) => {
+    getArticles({ topic, sort_by: sortBy }).then((data) => {
       setArticleList(data);
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [topic, sortBy]);
 
-  return { articleList, isLoading };
+  return { articleList, isLoading, setSortBy, sortBy };
 };
 
 export const useVotes = (article_id, setHasErrored) => {
