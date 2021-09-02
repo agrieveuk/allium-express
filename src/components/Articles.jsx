@@ -14,8 +14,9 @@ const Articles = () => {
             return (
               <li key={article_id} className='article-list-item'>
                 <Link to={`/articles/${article_id}`}>
-                  <h4>{title}</h4>
+                  <h5>{title}</h5>
                   <img
+                    className='article-list-item-img'
                     src='https://picsum.photos/400/300'
                     alt='placeholder article visual'
                   />

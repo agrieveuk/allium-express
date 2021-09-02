@@ -1,3 +1,119 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
+
+* {
+  font-family: 'Cardo', serif;
+  text-decoration: none;
+  color: rgb(51, 76, 87);
   text-align: center;
+}
+
+body {
+  margin: 0px;
+  /* background-color: aliceblue; */
+  /* background-image: url(https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png); */
+  /* background-image: url('./images/background.png'); */
+  background-image: url(https://www.teahub.io/photos/full/40-402760_light-color-background-for-website.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+img {
+  max-width: 95%;
+}
+
+#logo {
+  width: 30px;
+}
+
+#logo-title {
+  display: inline-block;
+}
+
+h2 {
+  width: fit-content;
+  display: inline;
+  margin-left: 16px;
+}
+
+p {
+  margin: 0px;
+}
+
+nav {
+  border-top: 1px solid rgb(103, 161, 137);
+  border-bottom: 1px solid rgb(103, 161, 137);
+  margin: 0px 3% 0px 3%;
+  font-size: medium;
+}
+
+.article-list {
+  list-style-type: none;
+  padding: 0px 15% 0px 15%;
+}
+
+.article-list-item {
+  background-color: rgba(90, 135, 143, 0.479);
+  margin-bottom: 10%;
+  padding: 20px;
+  border-radius: 7px;
+  box-shadow: -2px 2px 9px 0px rgb(51, 76, 87);
+}
+
+.article-list :hover {
+  opacity: 0.9;
+  transition: 300ms ease-in-out;
+  font-weight: bolder;
+}
+
+.article-list-item h5 {
+  margin: 0px;
+}
+
+.article-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.article-list-item-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.vote-icon {
+  width: 100%;
+}
+
+.vote-button {
+  width: 65px;
+  border: none;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  font-size: larger;
+}
+
+.vote-button:hover {
+  transform: scale(1.25);
+}
+
+.vote-button:active {
+  transform: scale(1.1);
+}
+
+.not-found-page img {
+  max-height: 45vh;
+}
+
+@media only screen and (min-width: 900px) {
+  h3 {
+    font-size: x-large;
+  }
+  h5 {
+    font-size: large;
+  }
+  p {
+    font-size: large;
+  }
 }
