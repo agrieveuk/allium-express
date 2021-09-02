@@ -8,6 +8,7 @@ import Nav from './components/Nav';
 import Header from './components/Header';
 import Banner from './components/Banner';
 import RequireLogin from './components/RequireLogin';
+import SignOut from './components/SignOut';
 
 function App() {
   const [user, setUser] = useState({ username: 'weegembump' });
@@ -16,6 +17,7 @@ function App() {
     <div className='App'>
       <Header />
       <RequireLogin user={user} setUser={setUser}>
+        <SignOut user={user} setUser={setUser} />
         <Nav />
         <Switch>
           <Route exact path='/'>
