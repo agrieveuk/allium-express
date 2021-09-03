@@ -48,6 +48,11 @@ const patchComment = async ({ comment_id, inc_votes }) => {
   return data.comment.votes;
 };
 
+const deleteComment = async (comment_id) => {
+  const { data } = await newsApi.delete(`/comments/${comment_id}`);
+  return data;
+};
+
 export {
   getArticles,
   getArticleById,
@@ -55,4 +60,5 @@ export {
   patchArticle,
   postComment,
   patchComment,
+  deleteComment,
 };

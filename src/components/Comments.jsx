@@ -1,4 +1,5 @@
 import { useComments } from '../hooks/useApi';
+import DeleteButton from './DeleteButton';
 import NewComment from './NewComment';
 import Votes from './Votes';
 
@@ -22,6 +23,12 @@ const Comments = ({ article_id, user }) => {
                   ${created_at.substr(0, 10)}`}</p>
               <p>{body}</p>
               <Votes comment_id={comment_id} votes={votes} />
+              {author === user.username && (
+                <DeleteButton
+                  comment_id={comment_id}
+                  setComments={setComments}
+                />
+              )}
             </li>
           );
         })}
