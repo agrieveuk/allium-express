@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import { useArticles } from '../hooks/useApi';
 import PageButton from './PageButton';
 import SortOption from './SortOption';
@@ -13,8 +13,10 @@ const Articles = () => {
     page,
     setPage,
     totalArticles,
+    error,
   } = useArticles(topic);
 
+  if (error) return <Redirect to='/404' />;
   if (isLoading) return <h3>Any moment now...</h3>;
   return (
     <main>

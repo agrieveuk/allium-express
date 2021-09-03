@@ -51,6 +51,7 @@ export const useArticles = (topic) => {
   const [sortBy, setSortBy] = useState(undefined);
   const [page, setPage] = useState(1);
   const [totalArticles, setTotalArticles] = useState(0);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setPage(1);
@@ -59,11 +60,15 @@ export const useArticles = (topic) => {
   useEffect(() => {
     setIsLoading(true);
 
-    getArticles({ topic, sort_by: sortBy, page }).then((data) => {
-      setArticleList(data.articles);
-      setTotalArticles(+data.total_count);
-      setIsLoading(false);
-    });
+    getArticles({ topic, sort_by: sortBy, page })
+      .then((data) => {
+        setArticleList(data.articles);
+        setTotalArticles(+data.total_count);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, [topic, sortBy, page]);
 
   return {
@@ -74,6 +79,7 @@ export const useArticles = (topic) => {
     page,
     setPage,
     totalArticles,
+    error,
   };
 };
 
