@@ -37,7 +37,11 @@ const FullArticle = ({ user }) => {
         Comments: {article.comment_count}
       </button>
       {displayComments ? (
-        <Comments article_id={article_id} user={user} />
+        <Comments
+          article_id={article_id}
+          user={user}
+          comment_count={article.comment_count}
+        />
       ) : null}
     </main>
   );

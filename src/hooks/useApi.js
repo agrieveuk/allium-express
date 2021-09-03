@@ -26,17 +26,18 @@ export const useArticle = (article_id) => {
 export const useComments = (article_id) => {
   const [comments, setComments] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getComments(article_id).then((data) => {
+    getComments(article_id, page).then((data) => {
       setComments(data);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, [article_id, page]);
 
-  return { comments, isLoading, setComments };
+  return { comments, isLoading, setComments, setPage, page };
 };
 
 export const useArticles = (topic) => {

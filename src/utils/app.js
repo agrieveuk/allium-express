@@ -17,10 +17,11 @@ const getArticleById = async (article_id) => {
   return data.article;
 };
 
-const getComments = async (article_id) => {
+const getComments = async (article_id, page) => {
   const { data } = await newsApi.get(`/articles/${article_id}/comments`, {
     params: {
-      limit: 50,
+      limit: 4,
+      page,
     },
   });
   return data.comments;

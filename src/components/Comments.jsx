@@ -1,10 +1,12 @@
 import { useComments } from '../hooks/useApi';
 import DeleteButton from './DeleteButton';
 import NewComment from './NewComment';
+import PageButton from './PageButton';
 import Votes from './Votes';
 
-const Comments = ({ article_id, user }) => {
-  const { comments, isLoading, setComments } = useComments(article_id);
+const Comments = ({ article_id, user, comment_count }) => {
+  const { comments, isLoading, setComments, setPage, page } =
+    useComments(article_id);
 
   if (isLoading) return <h3>Any moment now...</h3>;
   return (
@@ -33,6 +35,7 @@ const Comments = ({ article_id, user }) => {
           );
         })}
       </ul>
+      <PageButton page={page} setPage={setPage} totalComments={comment_count} />
     </section>
   );
 };
