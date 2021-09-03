@@ -22,7 +22,7 @@ const getComments = async (article_id) => {
   return data.comments;
 };
 
-const patchArticle = async (article_id, inc_votes) => {
+const patchArticle = async ({ article_id, inc_votes }) => {
   const { data } = await newsApi.patch(`/articles/${article_id}`, {
     inc_votes,
   });
@@ -37,4 +37,18 @@ const postComment = async (article_id, username, body) => {
   return data.comment;
 };
 
-export { getArticles, getArticleById, getComments, patchArticle, postComment };
+const patchComment = async ({ comment_id, inc_votes }) => {
+  const { data } = await newsApi.patch(`/comments/${comment_id}`, {
+    inc_votes,
+  });
+  return data.comment.votes;
+};
+
+export {
+  getArticles,
+  getArticleById,
+  getComments,
+  patchArticle,
+  postComment,
+  patchComment,
+};

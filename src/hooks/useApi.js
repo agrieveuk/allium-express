@@ -4,6 +4,7 @@ import {
   getArticles,
   getComments,
   patchArticle,
+  patchComment,
 } from '../utils/app';
 
 export const useArticle = (article_id) => {
@@ -70,7 +71,7 @@ export const useArticles = (topic) => {
   };
 };
 
-export const useVotes = ({ article_id, setHasErrored }) => {
+export const useVotes = ({ article_id, comment_id, setHasErrored }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const flipLikeStatus = () => {
@@ -78,7 +79,9 @@ export const useVotes = ({ article_id, setHasErrored }) => {
     const inc_votes = isLiked ? -1 : 1;
     setIsLiked((currIsLiked) => !currIsLiked);
 
-    patchArticle(article_id, inc_votes).catch(() => {
+    const patchComponent = article_id ? patchArticle : patchComment;
+
+    patchComponent({ article_id, comment_id, inc_votes }).catch(() => {
       setHasErrored(true);
       setIsLiked((currIsLiked) => !currIsLiked);
     });

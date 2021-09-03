@@ -1,5 +1,6 @@
 import { useComments } from '../hooks/useApi';
 import NewComment from './NewComment';
+import Votes from './Votes';
 
 const Comments = ({ article_id, user }) => {
   const { comments, isLoading, setComments } = useComments(article_id);
@@ -20,7 +21,7 @@ const Comments = ({ article_id, user }) => {
               <p>{`${created_at.substr(12, 7)} 
                   ${created_at.substr(0, 10)}`}</p>
               <p>{body}</p>
-              <p>{votes}</p>
+              <Votes comment_id={comment_id} votes={votes} />
             </li>
           );
         })}
