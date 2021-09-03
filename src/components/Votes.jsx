@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { useVotes } from '../hooks/useApi';
+import {
+  SentimentVeryDissatisfiedTwoTone,
+  FavoriteBorder,
+  Favorite,
+} from '@material-ui/icons';
 
 const Votes = ({ article_id, comment_id, votes }) => {
   const [hasErrored, setHasErrored] = useState(false);
-  const [isLiked, flipLikeStatus] = useVotes({
+  const [isLiked, isDisliked, flipLikeStatus, flipDislikeStatus] = useVotes({
     article_id,
     comment_id,
     setHasErrored,
@@ -12,9 +17,16 @@ const Votes = ({ article_id, comment_id, votes }) => {
   return (
     <div>
       <button className='vote-button' onClick={flipLikeStatus}>
-        {isLiked ? <p aria-label='liked'>🫀</p> : <p aria-label='unliked'>🤍</p>}
+        {isLiked ? <Favorite color='secondary' /> : <FavoriteBorder />}
       </button>
-      <p>{isLiked ? votes + 1 : votes}</p>
+      <p>{isLiked ? votes + 1 : isDisliked ? votes - 1 : votes}</p>
+      <button className='vote-button' onClick={flipDislikeStatus}>
+        {isDisliked ? (
+          <SentimentVeryDissatisfiedTwoTone color='primary' />
+        ) : (
+          <SentimentVeryDissatisfiedTwoTone />
+        )}
+      </button>
       <br />
       {hasErrored && <p>Something went wrong :(</p>}
     </div>

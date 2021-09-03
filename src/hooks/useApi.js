@@ -85,19 +85,55 @@ export const useArticles = (topic) => {
 
 export const useVotes = ({ article_id, comment_id, setHasErrored }) => {
   const [isLiked, setIsLiked] = useState(false);
+  const [isDisliked, setIsDisliked] = useState(false);
+
+  let inc_votes;
 
   const flipLikeStatus = () => {
-    setHasErrored(false);
-    const inc_votes = isLiked ? -1 : 1;
-    setIsLiked((currIsLiked) => !currIsLiked);
+    if (isLiked) {
+      inc_votes = -1;
+      setIsLiked(false);
+    } else if (isDisliked) {
+      inc_votes = 2;
+      setIsDisliked(false);
+      setIsLiked(true);
+    } else {
+      inc_votes = 1;
+      setIsLiked(true);
+    }
+    updateVotes('like');
+  };
 
+  const flipDislikeStatus = () => {
+    if (isDisliked) {
+      inc_votes = 1;
+      setIsDisliked(false);
+    } else if (isLiked) {
+      inc_votes = -2;
+      setIsDisliked(true);
+      setIsLiked(false);
+    } else {
+      inc_votes = -1;
+      setIsDisliked(true);
+    }
+    updateVotes('dislike');
+  };
+
+  const updateVotes = (action) => {
+    setHasErrored(false);
     const patchComponent = article_id ? patchArticle : patchComment;
 
     patchComponent({ article_id, comment_id, inc_votes }).catch(() => {
       setHasErrored(true);
-      setIsLiked((currIsLiked) => !currIsLiked);
+      if (action === 'like') {
+        setIsLiked((currStatus) => !currStatus);
+        if (inc_votes === 2) setIsDisliked(true);
+      } else {
+        setIsDisliked((currStatus) => !currStatus);
+        if (inc_votes === -2) setIsLiked(true);
+      }
     });
   };
 
-  return [isLiked, flipLikeStatus];
+  return [isLiked, isDisliked, flipLikeStatus, flipDislikeStatus];
 };
