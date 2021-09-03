@@ -18,7 +18,11 @@ const getArticleById = async (article_id) => {
 };
 
 const getComments = async (article_id) => {
-  const { data } = await newsApi.get(`/articles/${article_id}/comments`);
+  const { data } = await newsApi.get(`/articles/${article_id}/comments`, {
+    params: {
+      limit: 50,
+    },
+  });
   return data.comments;
 };
 
