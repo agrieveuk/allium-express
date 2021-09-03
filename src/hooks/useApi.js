@@ -10,17 +10,22 @@ import {
 export const useArticle = (article_id) => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getArticleById(article_id).then((data) => {
-      setArticle(data);
-      setIsLoading(false);
-    });
+    getArticleById(article_id)
+      .then((data) => {
+        setArticle(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, [article_id]);
 
-  return { article, isLoading };
+  return { article, isLoading, error };
 };
 
 export const useComments = (article_id) => {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { useArticle } from '../hooks/useApi';
 import Comments from './Comments';
 import Votes from './Votes';
@@ -7,7 +7,7 @@ import Votes from './Votes';
 const FullArticle = ({ user }) => {
   const { article_id } = useParams();
   const [displayComments, setDisplayComments] = useState(false);
-  const { article, isLoading } = useArticle(article_id);
+  const { article, isLoading, error } = useArticle(article_id);
 
   const toggleComments = () => {
     setDisplayComments((currDisplayComments) => {
@@ -15,6 +15,7 @@ const FullArticle = ({ user }) => {
     });
   };
 
+  if (error) return <Redirect to='/404' />;
   if (isLoading) return <h3>Any moment now...</h3>;
   return (
     <main>
