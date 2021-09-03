@@ -70,7 +70,7 @@ export const useArticles = (topic) => {
   };
 };
 
-export const useVotes = (article_id, setHasErrored) => {
+export const useVotes = ({ article_id, setHasErrored }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const flipLikeStatus = () => {

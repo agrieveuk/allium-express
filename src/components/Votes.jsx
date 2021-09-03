@@ -3,7 +3,7 @@ import { useVotes } from '../hooks/useApi';
 
 const Votes = ({ article_id, votes }) => {
   const [hasErrored, setHasErrored] = useState(false);
-  const [isLiked, flipLikeStatus] = useVotes(article_id, setHasErrored);
+  const [isLiked, flipLikeStatus] = useVotes({ article_id, setHasErrored });
 
   return (
     <div>
