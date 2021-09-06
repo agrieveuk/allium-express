@@ -19,10 +19,13 @@ const NewComment = ({ article_id, setComments, user: { username } }) => {
   };
 
   return (
-    <div>
+    <div className='new-comment-form-container'>
       <form onSubmit={submitComment}>
-        <label htmlFor='new-comment'>{`
-          Throw your opinion into the ring! ${username}:`}</label>
+        <label htmlFor='new-comment'>
+          Throw your opinion into the ring! <br />
+          <br />
+          <span>{username}:</span>
+        </label>
         <textarea
           id='new-comment'
           value={newComment}

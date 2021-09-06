@@ -18,7 +18,12 @@ const DeleteButton = ({ comment_id, setComments }) => {
 
   return (
     <>
-      <button onClick={() => handleDelete(comment_id)}>Bin It</button>
+      <button
+        className='delete-button'
+        onClick={() => handleDelete(comment_id)}
+      >
+        Bin It
+      </button>
       {hasErrored && <p>Something went wrong :(</p>}
     </>
   );

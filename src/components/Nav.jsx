@@ -3,9 +3,15 @@ import { NavLink } from 'react-router-dom';
 const Nav = () => {
   return (
     <nav className='topics'>
-      <NavLink to='/topics/coding'>Coding</NavLink>
-      <NavLink to='/topics/football'>Football</NavLink>
-      <NavLink to='/topics/cooking'>Cooking</NavLink>
+      <NavLink activeClassName='active-topic' to='/topics/coding'>
+        Coding
+      </NavLink>
+      <NavLink activeClassName='active-topic' to='/topics/football'>
+        Football
+      </NavLink>
+      <NavLink activeClassName='active-topic' to='/topics/cooking'>
+        Cooking
+      </NavLink>
     </nav>
   );
 };

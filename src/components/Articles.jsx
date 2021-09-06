@@ -28,13 +28,13 @@ const Articles = () => {
             return (
               <li key={article_id} className='article-list-item'>
                 <Link to={`/articles/${article_id}`}>
-                  <h5>{title}</h5>
+                  <h4>{title}</h4>
                   <img
                     className='article-list-item-img'
                     src='https://picsum.photos/400/300'
                     alt='placeholder article visual'
                   />
-                  <div className='article-info'>
+                  <div className='article-list-item-info'>
                     <p>votes: {votes}</p>
                     <p>{`${created_at.substr(12, 7)} 
                   ${created_at.substr(0, 10)}`}</p>

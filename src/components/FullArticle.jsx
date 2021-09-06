@@ -28,10 +28,10 @@ const FullArticle = ({ user }) => {
             ${article.created_at.substr(0, 10)}`}</p>
         </div>
         <img
-          src='https://picsum.photos/800/500'
+          src='https://picsum.photos/1200/750'
           alt='placeholder article visual'
         />
-        <p>{article.body}</p>
+        <p className='article-content'>{article.body}</p>
         <Votes article_id={article_id} votes={article.votes} />
       </article>
       <button onClick={toggleComments}>

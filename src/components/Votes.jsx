@@ -15,16 +15,23 @@ const Votes = ({ article_id, comment_id, votes }) => {
   });
 
   return (
-    <div>
+    <div className='votes-container'>
       <button className='vote-button' onClick={flipLikeStatus}>
-        {isLiked ? <Favorite color='secondary' /> : <FavoriteBorder />}
+        {isLiked ? (
+          <Favorite color='secondary' aria-label='liked' />
+        ) : (
+          <FavoriteBorder aria-label='like' />
+        )}
       </button>
       <p>{isLiked ? votes + 1 : isDisliked ? votes - 1 : votes}</p>
       <button className='vote-button' onClick={flipDislikeStatus}>
         {isDisliked ? (
-          <SentimentVeryDissatisfiedTwoTone color='primary' />
+          <SentimentVeryDissatisfiedTwoTone
+            aria-label='disliked'
+            color='primary'
+          />
         ) : (
-          <SentimentVeryDissatisfiedTwoTone />
+          <SentimentVeryDissatisfiedTwoTone aria-label='dislike' />
         )}
       </button>
       <br />

@@ -10,7 +10,7 @@ const Comments = ({ article_id, user, comment_count }) => {
 
   if (isLoading) return <h3>Any moment now...</h3>;
   return (
-    <section>
+    <section className='comment-section'>
       <NewComment
         article_id={article_id}
         user={user}
@@ -19,11 +19,13 @@ const Comments = ({ article_id, user, comment_count }) => {
       <ul>
         {comments.map(({ comment_id, votes, created_at, author, body }) => {
           return (
-            <li key={comment_id}>
-              <p>{author}</p>
-              <p>{`${created_at.substr(12, 7)} 
+            <li className='comment' key={comment_id}>
+              <div className='comment-body'>
+                <p>{author}</p>
+                <p>{`${created_at.substr(12, 7)} 
                   ${created_at.substr(0, 10)}`}</p>
-              <p>{body}</p>
+                <p>{body}</p>
+              </div>
               <Votes comment_id={comment_id} votes={votes} />
               {author === user.username && (
                 <DeleteButton
