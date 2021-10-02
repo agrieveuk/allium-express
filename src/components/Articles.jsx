@@ -4,7 +4,7 @@ import PageButton from './PageButton';
 import SortOption from './SortOption';
 
 const Articles = () => {
-  const { topic } = useParams();
+  const { topic, username } = useParams();
   const {
     articleList,
     isLoading,
@@ -13,8 +13,8 @@ const Articles = () => {
     page,
     setPage,
     totalArticles,
-    error,
-  } = useArticles(topic);
+    error
+  } = useArticles({ topic, author: username });
 
   if (error) return <Redirect to='/404' />;
   if (isLoading) return <h3>Any moment now...</h3>;

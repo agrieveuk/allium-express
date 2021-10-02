@@ -4,7 +4,7 @@ import {
   getArticles,
   getComments,
   patchArticle,
-  patchComment,
+  patchComment
 } from '../utils/app';
 
 export const useArticle = (article_id) => {
@@ -45,7 +45,7 @@ export const useComments = (article_id) => {
   return { comments, isLoading, setComments, setPage, page };
 };
 
-export const useArticles = (topic) => {
+export const useArticles = ({ topic, author }) => {
   const [articleList, setArticleList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState(undefined);
@@ -55,12 +55,12 @@ export const useArticles = (topic) => {
 
   useEffect(() => {
     setPage(1);
-  }, [topic]);
+  }, [topic, author]);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getArticles({ topic, sort_by: sortBy, page })
+    getArticles({ topic, author, sort_by: sortBy, page })
       .then((data) => {
         setArticleList(data.articles);
         setTotalArticles(+data.total_count);
@@ -69,7 +69,7 @@ export const useArticles = (topic) => {
       .catch((err) => {
         setError(err);
       });
-  }, [topic, sortBy, page]);
+  }, [topic, sortBy, page, author]);
 
   return {
     articleList,
@@ -79,7 +79,7 @@ export const useArticles = (topic) => {
     page,
     setPage,
     totalArticles,
-    error,
+    error
   };
 };
 
