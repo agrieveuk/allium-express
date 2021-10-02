@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Redirect, Link } from 'react-router-dom';
 import { useArticle } from '../hooks/useApi';
 import Comments from './Comments';
 import Votes from './Votes';
@@ -22,7 +22,9 @@ const FullArticle = ({ user }) => {
       <article>
         <h3>{article.title}</h3>
         <div className='full-article-info'>
-          <p>{article.author}</p>
+          <Link to={`/users/${article.author}`}>
+            <p>{article.author}</p>
+          </Link>
           <p>{article.topic}</p>
           <p>{`${article.created_at.substr(12, 7)} 
             ${article.created_at.substr(0, 10)}`}</p>
