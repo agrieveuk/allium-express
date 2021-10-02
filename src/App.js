@@ -18,8 +18,8 @@ function App() {
     <div className='App'>
       <Header />
       <RequireLogin user={user} setUser={setUser}>
-        <SignOut user={user} setUser={setUser} />
         <Nav />
+        <SignOut user={user} setUser={setUser} />
         <Switch>
           <Route exact path='/'>
             <Articles />
