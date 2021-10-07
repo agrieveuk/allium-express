@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { deleteComment } from '../utils/app';
+import { deleteComment } from '../utils/api';
 
 const DeleteButton = ({ comment_id, setComments }) => {
   const [hasErrored, setHasErrored] = useState(false);

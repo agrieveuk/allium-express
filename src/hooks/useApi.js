@@ -5,7 +5,7 @@ import {
   getComments,
   patchArticle,
   patchComment
-} from '../utils/app';
+} from '../utils/api';
 
 export const useArticle = (article_id) => {
   const [article, setArticle] = useState({});
