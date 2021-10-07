@@ -28,6 +28,7 @@ const NewComment = ({ article_id, setComments, user: { username } }) => {
         </label>
         <textarea
           id='new-comment'
+          required
           value={newComment}
           onChange={writeComment}
         ></textarea>
