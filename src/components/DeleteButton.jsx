@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { deleteComment } from '../utils/api';
+import { Delete } from '@material-ui/icons';
 
 const DeleteButton = ({ comment_id, setComments }) => {
   const [hasErrored, setHasErrored] = useState(false);
@@ -22,7 +23,7 @@ const DeleteButton = ({ comment_id, setComments }) => {
         className='delete-button'
         onClick={() => handleDelete(comment_id)}
       >
-        Bin It
+        <Delete aria-label='delete' />
       </button>
       {hasErrored && <p>Something went wrong :(</p>}
     </>
