@@ -4,7 +4,8 @@ import {
   getArticles,
   getComments,
   patchArticle,
-  patchComment
+  patchComment,
+  getUser
 } from '../utils/api';
 
 export const useArticle = (article_id) => {
@@ -136,4 +137,23 @@ export const useVotes = ({ article_id, comment_id, setHasErrored }) => {
   };
 
   return [isLiked, isDisliked, flipLikeStatus, flipDislikeStatus];
+};
+
+export const useUser = (username) => {
+  const [error, setError] = useState(null);
+  const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getUser(username)
+      .then((data) => {
+        setUser(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+      });
+  }, [username]);
+
+  return { user, isLoading, error };
 };
