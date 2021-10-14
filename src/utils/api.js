@@ -54,6 +54,11 @@ const deleteComment = async (comment_id) => {
   return data;
 };
 
+const getUser = async (username) => {
+  const { data } = await newsApi.get(`/users/${username}`);
+  return data.user;
+};
+
 export {
   getArticles,
   getArticleById,
@@ -61,5 +66,6 @@ export {
   patchArticle,
   postComment,
   patchComment,
-  deleteComment
+  deleteComment,
+  getUser
 };
