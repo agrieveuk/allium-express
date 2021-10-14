@@ -29,7 +29,7 @@ const NewComment = ({ article_id, setComments, user: { username } }) => {
         <textarea
           id='new-comment'
           required
-          maxlength='500'
+          maxLength='500'
           placeholder='Write your comment here...'
           rows='3'
           value={newComment}
