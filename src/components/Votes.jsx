@@ -8,7 +8,7 @@ import {
 
 const Votes = ({ article_id, comment_id, votes }) => {
   const [hasErrored, setHasErrored] = useState(false);
-  const [isLiked, isDisliked, flipLikeStatus, flipDislikeStatus] = useVotes({
+  const { isLiked, isDisliked, flipLikeStatus, flipDislikeStatus } = useVotes({
     article_id,
     comment_id,
     setHasErrored,

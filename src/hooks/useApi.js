@@ -136,7 +136,7 @@ export const useVotes = ({ article_id, comment_id, setHasErrored }) => {
     });
   };
 
-  return [isLiked, isDisliked, flipLikeStatus, flipDislikeStatus];
+  return { isLiked, isDisliked, flipLikeStatus, flipDislikeStatus };
 };
 
 export const useUser = (username) => {
