@@ -17,7 +17,7 @@ const Comments = ({ article_id, user, comment_count }) => {
         user={user}
         setComments={setComments}
       />
-      <ul>
+      <ul className='comment-section-list'>
         {comments.map(({ comment_id, votes, created_at, author, body }) => {
           return (
             <li className='comment' key={comment_id}>
@@ -25,7 +25,7 @@ const Comments = ({ article_id, user, comment_count }) => {
                 <Link to={`/users/${author}`}>
                   <p>{author}</p>
                 </Link>
-                <p>{`${created_at.substr(12, 7)} 
+                <p className='comment-date'>{`${created_at.substr(12, 7)} 
                   ${created_at.substr(0, 10)}`}</p>
                 <p>{body}</p>
               </div>
