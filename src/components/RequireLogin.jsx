@@ -5,7 +5,7 @@ const RequireLogin = ({ user, setUser, children }) => {
       <section>
         <h2>Welcome!</h2>
         <p>Please login to continue</p>
-        <button onClick={() => setUser({ username: 'happyamy2016' })}>
+        <button onClick={() => setUser({ username: 'weegembump' })}>
           Continue as guest
         </button>
       </section>
