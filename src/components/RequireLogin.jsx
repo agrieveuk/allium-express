@@ -2,12 +2,18 @@ const RequireLogin = ({ user, setUser, children }) => {
   if (user) return children;
   else {
     return (
-      <section>
-        <h2>Welcome!</h2>
-        <p>Please login to continue</p>
-        <button onClick={() => setUser({ username: 'weegembump' })}>
-          Continue as guest
-        </button>
+      <section className='login-container'>
+        <div className='login'>
+          <h3>Welcome!</h3>
+          <p>Please login to continue</p>
+          <button
+            className='animated-button'
+            onClick={() => setUser({ username: 'weegembump' })}
+          >
+            <div className='circle' />
+            <span>Continue as guest</span>
+          </button>
+        </div>
       </section>
     );
   }
