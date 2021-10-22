@@ -36,8 +36,9 @@ const FullArticle = ({ user }) => {
         <p className='article-content'>{article.body}</p>
         <Votes article_id={article_id} votes={article.votes} />
       </article>
-      <button onClick={toggleComments}>
-        Comments: {article.comment_count}
+      <button className='animated-button' onClick={toggleComments}>
+        <div className='circle' />
+        <span>Comments: {article.comment_count}</span>
       </button>
       {displayComments ? (
         <Comments

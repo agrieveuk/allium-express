@@ -36,6 +36,49 @@ a:hover {
   font-weight: bold;
 }
 
+.animated-button {
+  background: rgb(30, 2, 75);
+  color: aliceblue;
+  font-weight: bold;
+  line-height: 150%;
+  border-radius: 20px;
+  padding: 0.5% 2%;
+  border: 1px solid rgb(30, 2, 75);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.animated-button span {
+  font-size: x-small;
+  position: relative;
+  transition: all 0.45s ease-Out;
+}
+
+.circle {
+  width: 0%;
+  height: 0%;
+  opacity: 0.5;
+  border-radius: 50%;
+  background: whitesmoke;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  top: 25%;
+  left: 50%;
+}
+
+.animated-button:hover .circle {
+  width: 300%;
+  height: 500%;
+  opacity: 1;
+  top: -150%;
+  left: -100%;
+}
+
+.animated-button:hover span {
+  color: #060b27;
+}
+
 #logo {
   width: 30px;
 }
@@ -330,6 +373,9 @@ h3 {
   }
   .signed-in p {
     font-size: medium;
+  }
+  .animated-button span {
+    font-size: small;
   }
   .topics {
     font-size: larger;

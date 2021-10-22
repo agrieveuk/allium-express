@@ -35,7 +35,10 @@ const NewComment = ({ article_id, setComments, user: { username } }) => {
           value={newComment}
           onChange={writeComment}
         ></textarea>
-        <button type='submit'>Post</button>
+        <button className='animated-button' type='submit'>
+          <div className='circle' />
+          <span>Post</span>
+        </button>
       </form>
     </div>
   );

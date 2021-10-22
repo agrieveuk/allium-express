@@ -6,7 +6,10 @@ const SignOut = ({ user: { username }, setUser }) => {
   return (
     <div className='signed-in'>
       <p>{`Signed in as ${username}`}</p>
-      <button onClick={signOut}>Sign Out</button>
+      <button className='animated-button' onClick={signOut}>
+        <div className='circle' />
+        <span>Sign Out</span>
+      </button>
     </div>
   );
 };
