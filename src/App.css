@@ -188,6 +188,28 @@ p {
   font-weight: bold;
 }
 
+.banner {
+  display: flex;
+  flex-direction: column;
+  height: 45vh;
+  width: 100%;
+  background-color: rgb(0, 10, 31);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-y: bottom;
+  justify-content: center;
+  color: rgb(239, 251, 255);
+}
+
+.banner h3 {
+  margin: 0;
+  text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.473);
+  font-size: 4rem;
+  letter-spacing: 15px;
+  font-family: inherit;
+}
+
 ul {
   list-style-type: none;
   padding: 0px 5%;
@@ -412,6 +434,13 @@ h3 {
   }
   .topics {
     font-size: larger;
+  }
+  .banner {
+    background-size: contain;
+    height: 40vh;
+  }
+  .banner h3 {
+    font-size: 5rem;
   }
   article {
     margin: 0 15%;

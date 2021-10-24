@@ -12,9 +12,11 @@ const Banner = () => {
   };
 
   return (
-    <section className='banner'>
+    <section
+      className='banner'
+      style={{ backgroundImage: `url(${bannerRef[topic]})` }}
+    >
       <h3>{topic}</h3>
-      <img src={bannerRef[topic]} alt={`${topic} banner`} />
     </section>
   );
 };
