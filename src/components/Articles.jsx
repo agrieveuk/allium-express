@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import { useArticles } from '../hooks/useApi';
 import PageButton from './PageButton';
@@ -36,8 +37,9 @@ const Articles = () => {
                   />
                   <div className='article-list-item-info'>
                     <p>votes: {votes}</p>
-                    <p>{`${created_at.substr(12, 7)} 
-                  ${created_at.substr(0, 10)}`}</p>
+                    <p title={moment(created_at).format('LT, Do MMMM YYYY')}>
+                      {moment(created_at).format('D/MM/YY')}
+                    </p>
                     <p>comments: {comment_count}</p>
                   </div>
                 </Link>

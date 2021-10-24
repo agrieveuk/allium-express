@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { useComments } from '../hooks/useApi';
 import DeleteButton from './DeleteButton';
@@ -25,8 +26,10 @@ const Comments = ({ article_id, user, comment_count }) => {
                 <Link to={`/users/${author}`}>
                   <p>{author}</p>
                 </Link>
-                <p className='comment-date'>{`${created_at.substr(12, 7)} 
-                  ${created_at.substr(0, 10)}`}</p>
+                <p
+                  className='comment-date'
+                  title={moment(created_at).format('LT, ddd D MMM YYYY')}
+                >{`${moment(created_at).fromNow()}`}</p>
                 <p>{body}</p>
               </div>
               <Votes comment_id={comment_id} votes={votes} />

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useState } from 'react';
 import { useParams, Redirect, Link } from 'react-router-dom';
 import { useArticle } from '../hooks/useApi';
@@ -26,8 +27,9 @@ const FullArticle = ({ user }) => {
             <p>{article.author}</p>
           </Link>
           <p>{article.topic}</p>
-          <p>{`${article.created_at.substr(12, 7)} 
-            ${article.created_at.substr(0, 10)}`}</p>
+          <p title={moment(article.created_at).fromNow()}>
+            {moment(article.created_at).format('LT, D MMM YYYY')}
+          </p>
         </div>
         <img
           src='https://picsum.photos/1200/750'
